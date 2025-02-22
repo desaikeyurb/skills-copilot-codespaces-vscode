@@ -29,4 +29,7 @@ app.post('/comments', function(req, res) {
     }
     var comments = JSON.parse(data);
     var newComment = {
-      id: Date.now(),
+        id: Date.now(),
+        author: req.body.author,
+        text: req.body.text
+      };
