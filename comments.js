@@ -32,4 +32,14 @@ app.post('/comments', function(req, res) {
         id: Date.now(),
         author: req.body.author,
         text: req.body.text
-      };
+    };
+    comments.push(newComment);
+    fs.writeFile(commentsFile, JSON.stringify(comments, null, 2), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      res.json(newComment);
+    });
+  });
+});
